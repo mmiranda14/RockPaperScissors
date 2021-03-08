@@ -1,51 +1,39 @@
-// const game = () => {
-//     let pScore = 0;
-//     let cScore = 0;
+const playBtn = document.getElementById('playButton');
+const introScreen = document.getElementById('introDiv');
+const match = document.getElementById('matchDiv');
 
-    const startGame = () => {
-        const playBtn = document.getElementById('playButton');
-        const introScreen = document.getElementById('introDiv');
-        const match = document.getElementById('matchDiv');
+playBtn.addEventListener('click', () => {
+    introScreen.style.display = 'none';
+    match.style.display = 'block';
+});
 
-        playBtn.addEventListener('click', () => {
-            introScreen.style.display = 'none';
-            match.style.display = 'block';
-        });
-    };
+const playMatch = (event) => {
+    /*
+        * When rock paper scissors btn is clicked
+        * change img to selected choice.
+        * 
+        * Upon selection run math.random for CPU
+        */
+    const rock = "./assets/rock.png"
+    const paper = "./assets/paper.png"
+    const scissors = "./assets/scissors.png"
+    const playerHand = document.querySelector(".player_hand");
+    const compHand = document.querySelector(".comp_hand");
+    const computerOptions = [rock, paper, scissors];
+    const randomNum = Math.trunc(Math.random() * (3-1) + 1);
 
-    const playMatch = (e) => {
-        /*
-         * When rock paper scissors btn is clicked
-         * change img to selected choice.
-         * 
-         * Upon selection run math.random for CPU
-         */
-        const rock = "./assets/rock.png"
-        const paper = "./assets/paper.png"
-        const scissors = "./assets/scissors.png"
-        const arr1 = [rock, paper, scissors];
-        const playerHand = document.querySelector(".player_hand").arr1;
-        const compHand = document.querySelector(".comp_hand");
-
-        console.log(e);
-        playerHand.addEventListener('click', () => {
-
-        })
-
-        //const options = document.querySelectorALL('.options button');
-        // const computerHand = document.querySelector('.comp_hand');
-        
-        // const computerOptions = ['rock', 'paper', 'scissors'];
-
-        // const computerNumber = math.random() * 3;
-
-       
-    };
-
-    // Call all the inner functions
-    startGame();
-    playMatch();
-// };
-
-// Execute game Function
-game();
+    switch(event.target.className) {
+        case 'rock':
+            playerHand.src = rock;
+            compHand.src = computerOptions[randomNum];
+            break;
+        case 'paper':
+            playerHand.src = paper;
+            compHand.src = computerOptions[randomNum];
+            break;
+        case 'scissors':
+            playerHand.src = scissors;
+            compHand.src = computerOptions[randomNum];
+            break;
+    }
+};
