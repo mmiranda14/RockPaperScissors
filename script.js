@@ -20,7 +20,7 @@ const playMatch = (event) => {
     const playerHand = document.querySelector(".player_hand");
     const compHand = document.querySelector(".comp_hand");
     const computerOptions = [rock, paper, scissors];
-    const randomNum = Math.trunc(Math.random() * (3-1) + 1);
+    const randomNum = Math.trunc(Math.random() * (3-1));
 
     switch(event.target.className) {
         case 'rock':
