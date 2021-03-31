@@ -12,13 +12,13 @@
 <body>
     <section class="game">
         <div class="score_board">
-            <div class="player_score">
+            <div>
                 <h2>Player</h2>
-                <p>0</p>
+                <p class="player_score">0</p>
             </div>
-            <div class="computer_score">
+            <div>
                 <h2>CPU</h2>
-                <p>0</p>
+                <p class="computer_score">0</p>
             </div>
         </div>
         
@@ -32,15 +32,17 @@
             <div class="hands">
                 <img class="player_hand" id="playerHand" src="./assets/rock.png" alt="">
                 <img class="comp_hand" id="compHand" src="./assets/rock.png" alt="">
-                
-                <img class="post_player_hand" id="playerHand" src="" alt="">
-                <img class="post_computer_hand" id="playerHand" src="" alt="">
             </div>
             <div class="options">
                 <button class="rock" onclick="playMatch(event)">Rock</button>
                 <button class="paper" onclick="playMatch(event)">Paper</button>
                 <button class="scissors" onclick="playMatch(event)">Scissors</button>
             </div>
+            <div class="options" style="margin-top:40px;">
+                 <button class="reset" onclick="reset()">Reset</button>
+            </div>
+            
+           
         </div>
     </section>
     <script src="script.js"></script>
