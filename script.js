@@ -85,7 +85,6 @@ function updateScore(playerChoice, computerChoice) {
 }
 
 function reset() {
-    console.log("hello");
     scoreboard.playerScore = 0;
     scoreboard.computerScore = 0;
     playerScore.innerHTML = scoreboard.playerScore;
