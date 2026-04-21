@@ -4,62 +4,155 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rock Paper Scissors Project</title>
+  <title>Neon Arena - Rock Paper Scissors</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <script src="static/js/gameFunctions.js" defer></script>
 </head>
 
 <body>
-  <section class="game">
-    <div class="score_board">
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="stars"></div>
+
+  <section class="game-shell">
+    <header class="top_bar">
       <div>
-        <h2>Player</h2>
-        <p class="player_score">0</p>
-      </div>
-      <div>
-        <h2>Computer</h2>
-        <p class="computer_score">0</p>
-      </div>
-    </div>
-
-    <div id="loginDiv" class="login_screen">
-      <h1>Login</h1>
-      <div class="login_box">
-        <label for="email">Email</label>
-        <input id="email" type="email" placeholder="Enter email" />
-
-        <label for="password">Password</label>
-        <input id="password" type="password" placeholder="Enter password" />
-
-        <button id="loginButton">Login</button>
-        <p id="loginMessage" class="login_message"></p>
-      </div>
-    </div>
-
-    <div id="introDiv" class="intro">
-      <h1>Rock Paper Scissors</h1>
-      <button id="playButton">Let's Play!</button>
-    </div>
-
-    <div id="matchDiv" class="match">
-      <h2 class="option-prompt">Choose an option</h2>
-
-      <div class="hands">
-        <img class="player_hand" id="playerHand" src="./assets/rock.png" alt="Player hand" />
-        <img class="comp_hand" id="compHand" src="./assets/rock.png" alt="Computer hand" />
+        <h1 class="game_title">NEON ARENA</h1>
+        <p class="game_subtitle">Rock. Paper. Scissors. Cosmic dominance.</p>
       </div>
 
-      <div class="options">
-        <button class="rock" onclick="playMatch(event)">Rock</button>
-        <button class="paper" onclick="playMatch(event)">Paper</button>
-        <button class="scissors" onclick="playMatch(event)">Scissors</button>
+      <div class="top_actions">
+        <span id="welcomeTag" class="welcome_tag"></span>
+        <button id="logoutButton" class="small_btn danger">Logout</button>
+      </div>
+    </header>
+
+    <section class="hud">
+      <div class="hud_card">
+        <span class="hud_label">PLAYER</span>
+        <h2 id="playerNameDisplay">Player</h2>
+        <p class="score_value player_score">0</p>
       </div>
 
-      <div class="options">
-        <button class="reset" onclick="reset()">Reset</button>
+      <div class="hud_card center_hud">
+        <span class="hud_label">MATCH STATUS</span>
+        <p id="winnerMessage" class="winner_message">Login to enter the arena</p>
+        <div class="mini_stats">
+          <div>
+            <span class="mini_label">Wins</span>
+            <strong id="totalWins">0</strong>
+          </div>
+          <div>
+            <span class="mini_label">Losses</span>
+            <strong id="totalLosses">0</strong>
+          </div>
+          <div>
+            <span class="mini_label">Streak</span>
+            <strong id="winStreak">0</strong>
+          </div>
+        </div>
       </div>
-    </div>
+
+      <div class="hud_card">
+        <span class="hud_label">CPU</span>
+        <h2>Neon Bot</h2>
+        <p class="score_value computer_score">0</p>
+      </div>
+    </section>
+
+    <section id="loginDiv" class="screen login_screen">
+      <div class="panel login_panel">
+        <p class="eyebrow">ACCESS TERMINAL</p>
+        <h2>Enter the Neon Arena</h2>
+
+        <div class="login_box">
+          <label for="username">Pilot Name</label>
+          <input id="username" type="text" placeholder="Enter your name" />
+
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Enter email" />
+
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Enter password" />
+
+          <button id="loginButton" class="primary_btn">Launch Session</button>
+          <p id="loginMessage" class="login_message"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="introDiv" class="screen intro">
+      <div class="panel intro_panel">
+        <p class="eyebrow">SYSTEM READY</p>
+        <h2>Welcome to the Arena</h2>
+        <p class="sub_text">
+          First to 5 wins the battle. Build your streak. Crush the Neon Bot.
+        </p>
+        <button id="playButton" class="primary_btn">Start Battle</button>
+      </div>
+    </section>
+
+    <section id="matchDiv" class="screen match">
+      <div class="panel match_panel">
+        <div class="arena_header">
+          <h2 class="option-prompt">Choose Your Weapon</h2>
+          <p class="sub_text">Rock beats Scissors. Paper beats Rock. Scissors beats Paper.</p>
+        </div>
+
+        <div class="countdown_overlay" id="countdownOverlay">
+          <span id="countdownText">3</span>
+        </div>
+
+        <div class="hands">
+          <div class="fighter_side">
+            <p class="fighter_name" id="fighterPlayerName">Player</p>
+            <img class="player_hand" id="playerHand" src="./assets/rock.png" alt="Player hand" />
+          </div>
+
+          <div class="vs_text">VS</div>
+
+          <div class="fighter_side">
+            <p class="fighter_name">Neon Bot</p>
+            <img class="comp_hand" id="compHand" src="./assets/rock.png" alt="Computer hand" />
+          </div>
+        </div>
+
+        <div class="options">
+          <button class="choice-btn neon_choice" data-choice="rock">Rock</button>
+          <button class="choice-btn neon_choice" data-choice="paper">Paper</button>
+          <button class="choice-btn neon_choice" data-choice="scissors">Scissors</button>
+        </div>
+
+        <div class="options bottom_row">
+          <button class="small_btn" id="resetButton">Reset Match</button>
+        </div>
+      </div>
+    </section>
   </section>
+
+  <div id="endGameModal" class="modal">
+    <div class="modal_card">
+      <p class="eyebrow">BATTLE COMPLETE</p>
+      <h2 id="finalResultTitle">Victory</h2>
+      <p id="finalResultText">You dominated the arena.</p>
+
+      <div class="modal_stats">
+        <div>
+          <span>Player Score</span>
+          <strong id="finalPlayerScore">0</strong>
+        </div>
+        <div>
+          <span>CPU Score</span>
+          <strong id="finalCpuScore">0</strong>
+        </div>
+      </div>
+
+      <div class="modal_actions">
+        <button id="playAgainButton" class="primary_btn">Play Again</button>
+        <button id="closeModalButton" class="small_btn">Close</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
