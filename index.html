@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors Project</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
-    <script src="static/js/gameFunctions.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rock Paper Scissors Project</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet" />
+  <script src="static/js/gameFunctions.js" defer></script>
 </head>
 
 <body>
-    <section class="game">
-        <div class="score_board">
-            <div>
-                <h2>Player</h2>
-                <p class="player_score">0</p>
-            </div>
-            <div>
-                <h2>Player 2</h2>
-                <p class="computer_score">0</p>
-            </div>
-        </div>
+  <section class="game">
+    <div class="score_board">
+      <div>
+        <h2>Player</h2>
+        <p class="player_score">0</p>
+      </div>
+      <div>
+        <h2>Computer</h2>
+        <p class="computer_score">0</p>
+      </div>
+    </div>
 
-        <div id="introDiv" class="intro">
-            <h1>Rock Paper Scissors</h1>
-            <button id="playButton">Let's Play!</button>
-        </div>
+    <div id="loginDiv" class="login_screen">
+      <h1>Login</h1>
+      <div class="login_box">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter email" />
 
-        <div class="sign_in">
-            <div class="sign_in_options">
-                <label for="email">Email</label>
-                <input type="email" required>
-                <label for="password">Password</label>
-                <input type="password" required>
-            </div>
-        </div>
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter password" />
 
-        <div id="matchDiv" class="match">
-            <h2 class="option-prompt">Choose an option</h2>
-            <div class="hands">
-                <img class="player_hand" id="playerHand" src="./assets/rock.png" alt="">
-                <img class="comp_hand" id="compHand" src="./assets/rock.png" alt="">
-            </div>
-            <div class="options">
-                <button class="rock" onclick="playMatch(event)">Rock</button>
-                <button class="paper" onclick="playMatch(event)">Paper</button>
-                <button class="scissors" onclick="playMatch(event)">Scissors</button>
-            </div>
-            <div class="options">
-                <button class="reset" onclick="reset()">Reset</button>
-            </div>
+        <button id="loginButton">Login</button>
+        <p id="loginMessage" class="login_message"></p>
+      </div>
+    </div>
 
+    <div id="introDiv" class="intro">
+      <h1>Rock Paper Scissors</h1>
+      <button id="playButton">Let's Play!</button>
+    </div>
 
-        </div>
-    </section>
+    <div id="matchDiv" class="match">
+      <h2 class="option-prompt">Choose an option</h2>
 
+      <div class="hands">
+        <img class="player_hand" id="playerHand" src="./assets/rock.png" alt="Player hand" />
+        <img class="comp_hand" id="compHand" src="./assets/rock.png" alt="Computer hand" />
+      </div>
+
+      <div class="options">
+        <button class="rock" onclick="playMatch(event)">Rock</button>
+        <button class="paper" onclick="playMatch(event)">Paper</button>
+        <button class="scissors" onclick="playMatch(event)">Scissors</button>
+      </div>
+
+      <div class="options">
+        <button class="reset" onclick="reset()">Reset</button>
+      </div>
+    </div>
+  </section>
 </body>
-
 </html>
